@@ -4,7 +4,8 @@ import MovieItem from "./MovieItem";
 import movieStore from "@/stores/movies";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { TMovieItem } from "@/types";
+import { TGenre, TMovieItem } from "@/types";
+import { getGenre } from "@/lib/utils";
 
 type TArrowProps = {
   className?: string;
@@ -52,7 +53,15 @@ function PrevArrow(props: TArrowProps) {
   );
 }
 
-function SlidderWrapper({ title, data }: { title: string; data: any }) {
+function SlidderWrapper({
+  title,
+  data,
+  genres,
+}: {
+  title: string;
+  data: Array<TMovieItem>;
+  genres: TGenre;
+}) {
   const { movies, setMovie, removeMovie } = movieStore(
     useShallow((state) => ({
       movies: state.movies,
@@ -103,6 +112,7 @@ function SlidderWrapper({ title, data }: { title: string; data: any }) {
               movies={movies}
               setMovie={setMovie}
               removeMovie={removeMovie}
+              genreText={getGenre(item?.genre_ids, genres)}
             />
           </div>
         ))}
