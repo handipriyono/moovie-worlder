@@ -3,9 +3,10 @@ import MovieItem from "@/components/MovieItem";
 import useFav from "@/hooks/useFav";
 import useSearch from "@/hooks/useSearch";
 import { TMovieItem } from "@/types";
+import { getGenre } from "@/lib/utils";
 
 export default function Favorites() {
-  const { moviesSearch, search, onHandleSearch } = useSearch();
+  const { moviesSearch, search, onHandleSearch, genres } = useSearch();
   const { movies, setMovie, removeMovie, rawMovie } = useFav();
 
   return (
@@ -27,6 +28,7 @@ export default function Favorites() {
                   movies={rawMovie}
                   setMovie={setMovie}
                   removeMovie={removeMovie}
+                  genreText={getGenre(item?.genre_ids, genres)}
                   isFavePage
                 />
               </div>
