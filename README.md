@@ -36,5 +36,13 @@ Here's how to set up and run the React Movie App:
    - The app will be available at `http://localhost:5173/`.
 
 5. **List of Pages**:
-   - Here are the paths for different pages within the project: - `/login`: Login & register page - `/dashboard`: Shows a list of movies (popular, top rated, now playing, upcoming) - `/favorites`: Displays a list of favorite movies ( local storage data)
+
+   - Here are the paths for different pages within the project:
+   - `/login`: Login & register page
+   - `/dashboard`: Shows a list of movies (popular, top rated, now playing, upcoming)
+   - `/favorites`: Displays a list of favorite movies ( local storage data)
      🎬🍿
+
+     **_Build folder = `dist`_**
+
+     - run : `yarn preview`
