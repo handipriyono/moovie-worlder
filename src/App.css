@@ -1,0 +1,8 @@
+#root {
+}
+
+.slick-next::before,
+.slick-prev::before {
+  font-size: 60px;
+  z-index: 5;
+}
