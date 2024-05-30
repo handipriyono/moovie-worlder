@@ -7,4 +7,8 @@ export type TMovieItem = {
   overview: string;
   release_date: string;
   poster_path: string;
+  genre_ids: Array<number>;
+  adult: boolean;
 };
+
+export type TGenre = { [key: number]: { id: number; name: string } };
