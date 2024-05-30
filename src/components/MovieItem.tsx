@@ -21,6 +21,7 @@ type TMovieItemProps = {
   setMovie: (movieId: number | string, movieData: TMovieItem) => void;
   removeMovie: (movieId: number | string) => void;
   isFavePage?: boolean;
+  genreText?: string;
 };
 
 function MovieItem({
@@ -29,6 +30,7 @@ function MovieItem({
   setMovie,
   removeMovie,
   isFavePage,
+  genreText,
 }: TMovieItemProps) {
   const onFaved = (id: string | number, data: TMovieItem) => {
     try {
@@ -41,7 +43,7 @@ function MovieItem({
         setMovie(id, data);
       }
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);//
     }
   };
 
@@ -120,7 +122,8 @@ function MovieItem({
               <div>{item?.overview}</div>
               <Separator className="my-5 bg-gray-400" />
               <span className="flex gap-x-3">
-                <p className="text-gray-400">Genres:</p>Crime, Sci-Fi & Fantasy
+                <p className="text-gray-400">Genres:</p>
+                {genreText}
               </span>
               <span className="flex gap-x-3">
                 <p className="text-gray-400">Vote Average:</p>
@@ -133,6 +136,10 @@ function MovieItem({
               <span className="flex gap-x-3">
                 <p className="text-gray-400">Original Language:</p>
                 {item?.original_language}
+              </span>
+              <span className="flex gap-x-3">
+                <p className="text-gray-400">Adult Content:</p>
+                {item?.adult ? "Yes" : "No"}
               </span>
             </div>
           </DialogDescription>
