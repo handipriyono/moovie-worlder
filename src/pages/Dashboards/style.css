@@ -1,0 +1,7 @@
+.shadow-banner {
+  background: linear-gradient(180deg, #0000, #0e0e0e99, #141414);
+
+  height: 10.5rem;
+  width: 100%;
+  margin-top: -150px;
+}
