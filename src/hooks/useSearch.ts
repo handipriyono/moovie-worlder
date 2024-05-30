@@ -21,7 +21,7 @@ export default function useSearch() {
     setSearch("");
   }, []);
 
-  const onHandleSearch = (v) => {
+  const onHandleSearch = (v: string) => {
     setSearch(v);
   };
 
