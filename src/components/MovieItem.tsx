@@ -31,13 +31,17 @@ function MovieItem({
   isFavePage,
 }: TMovieItemProps) {
   const onFaved = (id: string | number, data: TMovieItem) => {
-    if (movies?.[id]) {
-      if (isFavePage) {
-        document.getElementById("closeDialog")?.click();
+    try {
+      if (movies?.[id]) {
+        if (isFavePage) {
+          document?.getElementById("closeDialog")?.click();
+        }
+        removeMovie(id);
+      } else {
+        setMovie(id, data);
       }
-      removeMovie(id);
-    } else {
-      setMovie(id, data);
+    } catch (error) {
+      console.log("error", error);
     }
   };
 
@@ -89,11 +93,12 @@ function MovieItem({
                         size={35}
                         fill={movies[item?.id] ? "orange" : "transparent"}
                         onClick={() => {
-                          if (!movies[item?.id]) {
-                            const resizableDiv = document.getElementById("fav");
-                            resizableDiv?.classList.add("animate-bounce");
+                          if (!movies?.[item?.id]) {
+                            const resizableDiv =
+                              document?.getElementById("fav");
+                            resizableDiv?.classList?.add("animate-bounce");
                             setTimeout(() => {
-                              resizableDiv?.classList.remove("animate-bounce");
+                              resizableDiv?.classList?.remove("animate-bounce");
                             }, 3200);
                           }
                           onFaved(item?.id, item);
@@ -102,7 +107,7 @@ function MovieItem({
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent className="bg-black text-white">
-                    {movies[item?.id]
+                    {movies?.[item?.id]
                       ? "Remove from Favorite list"
                       : "Add to Favorite List"}
                   </TooltipContent>
