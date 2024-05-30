@@ -12,3 +12,15 @@ export const getSearchMovies = async (query: string) => {
     //
   }
 };
+
+export const getGenre = async () => {
+  try {
+    const data = await axiosAPI.get("genre/movie/list?language=en-US", {
+      params: { api_key: REACT_APP_API_KEY },
+    });
+
+    return data?.data?.genres || [];
+  } catch (error) {
+    //
+  }
+};
